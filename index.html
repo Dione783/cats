@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./index.css" rel="stylesheet">
+    <title>Cats</title>
+</head>
+<body>
+    <div class="imageContainer">
+        <img id="imagem" src="https://cdn2.thecatapi.com/images/MTg0Mjg0OQ.jpg">
+    </div>
+    
+    <button id="nova">nova Imagem</button>
+    <script>
+        document.addEventListener("DOMContentLoaded",()=>{
+            fetch("https://api.thecatapi.com/v1/images/search").then(data=>data.json()).then(res=>{
+               imagem.src = res[0].url;
+            })
+        })
+        let imagem = document.getElementById("imagem");
+        let button = document.getElementById("nova");
+
+        button.addEventListener("click",()=>{
+            fetch("https://api.thecatapi.com/v1/images/search").then(data=>data.json()).then(res=>{
+               imagem.src = res[0].url;
+            })
+        })
+        
+    </script>
+</body>
+</html>
